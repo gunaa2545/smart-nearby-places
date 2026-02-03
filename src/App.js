@@ -1,8 +1,17 @@
 import { useState } from "react";
+const mockPlaces = [
+  { name: "Cafe WorkHub", rating: 4.6, type: "work" },
+  { name: "Romantic Rooftop", rating: 4.8, type: "date" },
+  { name: "Quick Bites Express", rating: 4.1, type: "quick" },
+  { name: "Budget Eats", rating: 4.0, type: "budget" },
+  { name: "Premium Workspace Cafe", rating: 4.9, type: "work" }
+];
+
 
 function App() {
   const [mood, setMood] = useState("");
   const [message, setMessage] = useState("");
+  const [places, setPlaces] = useState([]);
 
  const findPlaces = () => {
   if (!mood) {
@@ -19,7 +28,13 @@ function App() {
     (position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
-      setMessage(`Your location: ${lat}, ${lng}`);
+      const filteredPlaces = mockPlaces.filter(
+  (place) => place.type === mood
+);
+
+setPlaces(filteredPlaces);
+setMessage(`Showing places for "${mood}" mood`);
+
     },
     () => {
       setMessage("Location permission denied");
@@ -45,6 +60,14 @@ function App() {
       <button onClick={findPlaces}>Find Places</button>
 
       <p>{message}</p>
+      <ul>
+  {places.map((place, index) => (
+    <li key={index}>
+      {place.name} ⭐ {place.rating}
+    </li>
+  ))}
+</ul>
+
     </div>
   );
 }
