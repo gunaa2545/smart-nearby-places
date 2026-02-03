@@ -2,6 +2,15 @@ import { useState } from "react";
 
 function App() {
   const [mood, setMood] = useState("");
+  const [message, setMessage] = useState("");
+
+  const findPlaces = () => {
+    if (!mood) {
+      setMessage("Please select a mood first 🙂");
+    } else {
+      setMessage(`Finding places for "${mood}" mood...`);
+    }
+  };
 
   return (
     <div>
@@ -15,7 +24,11 @@ function App() {
         <option value="budget">Budget</option>
       </select>
 
-      <p>Selected mood: {mood}</p>
+      <br /><br />
+
+      <button onClick={findPlaces}>Find Places</button>
+
+      <p>{message}</p>
     </div>
   );
 }
