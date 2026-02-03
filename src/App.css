@@ -35,3 +35,14 @@ button:hover {
   border: 1px solid #ddd;
   border-radius: 6px;
 }
+h1 {
+  margin-bottom: 5px;
+}
+
+p {
+  margin-top: 5px;
+}
+
+.place-card strong {
+  font-size: 16px;
+}

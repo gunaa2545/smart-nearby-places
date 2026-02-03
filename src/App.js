@@ -46,7 +46,11 @@ setMessage(`Showing places for "${mood}" mood`);
 
   return (
     <div className="app">
-      <h1>Smart Nearby Places</h1>
+      <h1>📍 Smart Nearby Places</h1>
+<p style={{ color: "#555" }}>
+  Find the best nearby places based on your mood
+</p>
+
 
       <select onChange={(e) => setMood(e.target.value)}>
         <option value="">Select your mood</option>
