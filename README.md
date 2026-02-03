@@ -23,3 +23,11 @@ This project helped me understand:
 - How a React app is structured
 - How to run and modify a web application
 - Basics of Git and GitHub workflow
+
+## Demo Screenshots
+
+### Home Screen
+![Home Screen](screenshots/home.png)
+
+### Results Screen
+![Results Screen](screenshots/results.png)
