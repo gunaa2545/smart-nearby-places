@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./App.css";
 const mockPlaces = [
   { name: "Cafe WorkHub", rating: 4.6, type: "work" },
   { name: "Romantic Rooftop", rating: 4.8, type: "date" },
@@ -44,7 +45,7 @@ setMessage(`Showing places for "${mood}" mood`);
 
 
   return (
-    <div>
+    <div className="app">
       <h1>Smart Nearby Places</h1>
 
       <select onChange={(e) => setMood(e.target.value)}>
@@ -60,13 +61,13 @@ setMessage(`Showing places for "${mood}" mood`);
       <button onClick={findPlaces}>Find Places</button>
 
       <p>{message}</p>
-      <ul>
-  {places.map((place, index) => (
-    <li key={index}>
-      {place.name} ⭐ {place.rating}
-    </li>
-  ))}
-</ul>
+      {places.map((place, index) => (
+  <div className="place-card" key={index}>
+    <strong>{place.name}</strong>
+    <div>⭐ Rating: {place.rating}</div>
+  </div>
+))}
+
 
     </div>
   );
