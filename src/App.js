@@ -4,13 +4,29 @@ function App() {
   const [mood, setMood] = useState("");
   const [message, setMessage] = useState("");
 
-  const findPlaces = () => {
-    if (!mood) {
-      setMessage("Please select a mood first 🙂");
-    } else {
-      setMessage(`Finding places for "${mood}" mood...`);
+ const findPlaces = () => {
+  if (!mood) {
+    setMessage("Please select a mood first 🙂");
+    return;
+  }
+
+  if (!navigator.geolocation) {
+    setMessage("Geolocation is not supported by your browser");
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      setMessage(`Your location: ${lat}, ${lng}`);
+    },
+    () => {
+      setMessage("Location permission denied");
     }
-  };
+  );
+};
+
 
   return (
     <div>
