@@ -1,12 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-const mockPlaces = [
-  { name: "Cafe WorkHub", rating: 4.6, type: "work" },
-  { name: "Romantic Rooftop", rating: 4.8, type: "date" },
-  { name: "Quick Bites Express", rating: 4.1, type: "quick" },
-  { name: "Budget Eats", rating: 4.0, type: "budget" },
-  { name: "Premium Workspace Cafe", rating: 4.9, type: "work" }
-];
 
 
 function App() {
@@ -14,33 +7,26 @@ function App() {
   const [message, setMessage] = useState("");
   const [places, setPlaces] = useState([]);
 
- const findPlaces = () => {
+const findPlaces = async () => {
   if (!mood) {
     setMessage("Please select a mood first 🙂");
     return;
   }
 
-  if (!navigator.geolocation) {
-    setMessage("Geolocation is not supported by your browser");
-    return;
+  try {
+    setMessage("Finding places...");
+
+    const response = await fetch(
+      `http://localhost:5000/api/places?mood=${mood}`
+    );
+
+    const data = await response.json();
+
+    setPlaces(data);
+    setMessage(`Showing places for "${mood}" mood`);
+  } catch (error) {
+    setMessage("Failed to fetch places from server");
   }
-
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-      const filteredPlaces = mockPlaces.filter(
-  (place) => place.type === mood
-);
-
-setPlaces(filteredPlaces);
-setMessage(`Showing places for "${mood}" mood`);
-
-    },
-    () => {
-      setMessage("Location permission denied");
-    }
-  );
 };
 
 
