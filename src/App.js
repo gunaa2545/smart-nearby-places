@@ -47,12 +47,20 @@ function App() {
 
       <p>{message}</p>
 
-      {places.map((place, index) => (
-        <div className="place-card" key={index}>
-          <strong>{place.name}</strong>
-          <div>⭐ Rating: {place.rating}</div>
-        </div>
-      ))}
+     {places.map((place, index) => (
+  <div className="place-card" key={index}>
+    <div className="place-row">
+      <div className="place-icon">📍</div>
+
+      <div className="place-details">
+        <div className="place-name">{place.name}</div>
+        <div className="place-rating">⭐ {place.rating}</div>
+      </div>
+    </div>
+  </div>
+))}
+
+
     </div>
   );
 }

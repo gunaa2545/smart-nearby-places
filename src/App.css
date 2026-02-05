@@ -43,6 +43,32 @@ p {
   margin-top: 5px;
 }
 
-.place-card strong {
-  font-size: 16px;
+.place-card {
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.place-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.place-icon {
+  font-size: 20px;
+}
+
+.place-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.place-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.place-rating {
+  font-size: 13px;
+  color: #666;
 }
