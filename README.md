@@ -1,5 +1,14 @@
 # Smart Nearby Places
 
+## Architecture
+
+This is a full-stack web application.
+
+- Frontend: React (UI, mood selection, rendering)
+- Backend: Node.js + Express (API abstraction)
+- Data: Mocked Google Places API (used to avoid exposing API keys)
+
+The backend is designed to easily switch to the real Google Places API when billing is enabled.
 A beginner-friendly web application that recommends nearby places based on the user's mood.
 
 ## Features
