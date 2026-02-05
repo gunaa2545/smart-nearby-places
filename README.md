@@ -1,4 +1,8 @@
 # Smart Nearby Places
+## Live Demo
+
+Frontend: https://smart-nearby-places.netlify.app  
+Backend API: https://smart-nearby-places-backend.onrender.com
 
 ## Architecture
 
